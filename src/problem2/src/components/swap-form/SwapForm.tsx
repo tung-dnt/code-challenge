@@ -28,7 +28,7 @@ const SwapForm: React.FC = () => {
 		defaultValues: {
 			fromToken: "",
 			toToken: "",
-			amount: 0,
+			amount: 1,
 		},
 	});
 
@@ -38,8 +38,7 @@ const SwapForm: React.FC = () => {
 				onSubmit={form.handleSubmit(handleSwapCalculation)}
 				className="space-y-6"
 			>
-				<div className="flex items-center justify-between">
-					{/* From Currency Select */}
+				<div className="flex items-center justify-between flex-wrap gap-1">
 					<FormField
 						control={form.control}
 						name="fromToken"
@@ -51,10 +50,7 @@ const SwapForm: React.FC = () => {
 							/>
 						)}
 					/>
-
-					<span>To</span>
-
-					{/* To Currency Select */}
+					<span className="dark:text-gray-300">To</span>
 					<FormField
 						control={form.control}
 						name="toToken"
@@ -74,7 +70,7 @@ const SwapForm: React.FC = () => {
 					name="amount"
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Amount</FormLabel>
+							<FormLabel className="dark:text-gray-300">Amount</FormLabel>
 							<FormControl>
 								<Input
 									type="number"

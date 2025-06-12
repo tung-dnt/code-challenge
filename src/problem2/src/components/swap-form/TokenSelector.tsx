@@ -30,7 +30,7 @@ const TokenSelector: React.FC<TokenSelectorProps> = ({
 	label,
 }) => {
 	return (
-		<FormItem>
+		<FormItem className="w-[152px] overflow-hidden">
 			{label && <FormLabel>{label}</FormLabel>}
 			<Select
 				onValueChange={field.onChange}
@@ -38,14 +38,18 @@ const TokenSelector: React.FC<TokenSelectorProps> = ({
 			>
 				<FormControl>
 					<SelectTrigger>
-						<SelectValue placeholder={placeholder} />
+						<SelectValue
+							className="dark:text-gray-300"
+							placeholder={placeholder}
+						/>
 					</SelectTrigger>
 				</FormControl>
-				<SelectContent>
+				<SelectContent className="dark:bg-gray-500">
 					{tokenPrices.map((token) => (
 						<SelectItem key={token.currency} value={token.currency}>
-							<div className="flex items-center space-x-2">
+							<div className="flex items-center space-x-2 dark:text-gray-300">
 								<img
+									className="w-6 h-6"
 									src={token.tokenSymbol}
 									alt={`currency-from-${token.currency}`}
 								/>

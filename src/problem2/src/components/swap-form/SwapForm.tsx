@@ -8,6 +8,7 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { SkeletonCard } from "@/components/swap-form/FormSkeleton";
 import { useSwapCalculation } from "@/hooks/useSwapCalculation";
 import { useTokenPrices } from "@/hooks/useTokenPrices";
 import {
@@ -20,7 +21,7 @@ import { useForm } from "react-hook-form";
 import TokenSelector from "./TokenSelector";
 
 const SwapForm: React.FC = () => {
-	const { tokenPrices } = useTokenPrices();
+	const { tokenPrices, loading } = useTokenPrices();
 	const { swapResult, handleSwapCalculation } = useSwapCalculation();
 
 	const form = useForm<TCurrencySwapSchema>({
@@ -31,6 +32,8 @@ const SwapForm: React.FC = () => {
 			amount: 1,
 		},
 	});
+
+	if (loading) return <SkeletonCard />;
 
 	return (
 		<Form {...form}>
